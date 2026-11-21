@@ -1,7 +1,7 @@
 
 
 def hapus_antrean():
-    with open('database/bookingsalon.txt','r') as file:
+    with open('TugasBesar-python/database/bookingsalon.txt','r') as file:
         data = file.readlines()
     if len(data) == 0:
         print('Belum ada orderan')
@@ -11,13 +11,13 @@ def hapus_antrean():
         bayaran = 25000
         if 0 <= indeks < len(data):
             data.pop(indeks)
-            with open('database/bookingsalon.txt','w') as file:
+            with open('TugasBesar-python/database/bookingsalon.txt','w') as file:
                 file.writelines(data)
             print('antrian di hapus')
-            with open('database/kas.txt','r') as file:
+            with open('TugasBesar-python/database/kas.txt','r') as file:
                 kas = int(file.read().strip())
             hasil = kas + bayaran
-            with open ('database/kas.txt','w') as file:
+            with open ('TugasBesar-python/database/kas.txt','w') as file:
                 file.write(str(hasil))
     
         else:
@@ -27,20 +27,20 @@ def hapus_antrean():
 
     
 def lihat_antrean():
-    with open('database/bookingsalon.txt','r') as file:
+    with open('TugasBesar-python/database/bookingsalon.txt','r') as file:
         for line in file :
             data = line.strip().split('|')
             if len(data) == 4:
                 print(data)
 def lihat_kas():
-    with open('database/kas.txt','r') as file:
+    with open('TugasBesar-python/database/kas.txt','r') as file:
         data=file.read()
     print(data)
 
 def edit_menu():
     potongan_baru = input('masukkan potongan baru: ').upper()
-    with open('database/modelpotongan.txt','a') as file:
-        file.write(potongan_baru)
+    with open('TugasBesar-python/database/modelpotongan.txt','a') as file:
+        file.write(potongan_baru + '\n')
 
 def admin_login():
     print(50*"=")

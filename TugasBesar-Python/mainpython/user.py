@@ -15,7 +15,7 @@ def order(user):
             print('jam tidak tersedia')
             return
         try:
-            with open('database/bookingsalon.txt','r') as file:
+            with open('TugasBesar-python/database/bookingsalon.txt','r') as file:
                 for line in file:
                     data = line.strip().split('|')
                     if len(data) == 4 and data[2] == tanggal_bulan and data[3] == jam:
@@ -27,7 +27,7 @@ def order(user):
         if jumlah_booking >= 3:
                 print('antrian penuh')
         else:
-            with open('database/bookingsalon.txt','a') as file:
+            with open('TugasBesar-python/database/bookingsalon.txt','a') as file:
                 file.write(f'{nama}|{model_rambut}|{tanggal_bulan}|{jam}\n')
                 print('Orderan berhasil masuk')
                 return
@@ -37,7 +37,7 @@ def menu_user(user):
     while True:
         pilihan = int(input('1.Lihat Model Potongan\n2.Order\n3.Keluar '))
         if pilihan == 1:
-            with open('database/modelpotongan.txt','r') as file:
+            with open('TugasBesar-python/database/modelpotongan.txt','r') as file:
                 data = file.read().splitlines()
                 pprint.pprint(data[:15], width=50, compact=True)
                 print('Bisa Request Selain di Menu')
@@ -60,7 +60,7 @@ def register():
 
     try:
         '''mengecek username ada yang sama atau tidak'''
-        with open('database/userlogin.txt','r') as file:
+        with open('TugasBesar-python/database/userlogin.txt','r') as file:
             for line in file:
                 data = line.strip().split('|')
                 if len(data) == 2 and data[0] == username_baru:
@@ -69,7 +69,7 @@ def register():
     except FileNotFoundError:
         pass
                 
-    with open('database/userlogin.txt', 'a') as file:
+    with open('TugasBesar-python/database/userlogin.txt', 'a') as file:
         file.write(f"{username_baru}|{password_baru}\n")
 
 def login():
@@ -78,7 +78,7 @@ def login():
     username = input('masukkan username: ')
     password = input('masukkan password: ')
     try:
-        with open('database/userlogin.txt','r') as file:
+        with open('TugasBesar-python/database/userlogin.txt','r') as file:
             for line in file:
                 data = line.strip().split('|')
                 if len(data) == 2:
